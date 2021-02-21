@@ -27,4 +27,6 @@ npm start
 
 ## Mejoras implementadas
 
-1. 
+1. Sprite de Yoshi en vez del utilizado en clase.
+2. Salto del personaje mejorado para hacer una animación al subir y otra al bajar.
+3. Doble salto implementado como en el juego original.
