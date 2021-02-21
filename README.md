@@ -36,4 +36,4 @@ npm start
 4. Doble salto implementado como en el juego original
 5. Corregido collider de Yoshi
 6. Enemigo Goomba añadido
-6. Enemigo FireGuy añadido
+7. Enemigo FireGuy añadido
