@@ -4,7 +4,7 @@ export default class ShyGuy extends Phaser.Physics.Arcade.Sprite {
 
         this.scene = scene;
 
-        this.movementRange = 200;
+        this.movementRange = 192;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);

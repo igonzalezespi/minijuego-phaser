@@ -1,10 +1,10 @@
-export default class FireGuy extends Phaser.Physics.Arcade.Sprite {
+export default class Goomba extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x + 16, y - 16);
 
         this.scene = scene;
 
-        this.movementRange = 608;
+        this.movementRange = 192;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -12,8 +12,8 @@ export default class FireGuy extends Phaser.Physics.Arcade.Sprite {
 
         this.anims.create({
             key: 'walk',
-            frames: this.scene.anims.generateFrameNames('fireGuySprites', { start: 1, end: 9, prefix: 'walk-' }),
-            frameRate: 30,
+            frames: this.scene.anims.generateFrameNames('goombaSprites', { start: 1, end: 2, prefix: 'walk-' }),
+            frameRate: 2,
             repeat: -1,
         });
         this.play('walk', true);
@@ -28,9 +28,8 @@ export default class FireGuy extends Phaser.Physics.Arcade.Sprite {
             (this.direction === 1 && this.x > this.b) || (this.direction === -1 && this.x < this.a)
         ) {
             this.direction *= -1;
-            this.toggleFlipX();
         }
-        this.setVelocityX(this.direction * 10 * delta);
+        this.setVelocityX(this.direction * 2 * delta);
     }
 
     OnHit() {

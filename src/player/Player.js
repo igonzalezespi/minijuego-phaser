@@ -14,11 +14,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.doubleJumpingAutoTime = 0.6; // Segundos para realizar el doble salto si se mantiene el espacio al saltar
         this.doubleJumpingTimeout = null;
 
+        this.doubleJumpForce = 400;
+        this.doubleJumpMax = 220;
+
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
         this.cursor = this.scene.input.keyboard.createCursorKeys();
-        this.body.setSize(this.width * 0.3, this.height * 0.75);
+        this.body.setSize(this.width * 0.65, this.height * 0.75);
         this.body.setOffset((this.width - this.body.width) * 0.5, this.height * 0.25);
         this.scene.physics.add.collider(this, this.scene.layer);
         this.scene.physics.add.collider(this, this.scene.seaLayer, this.die, null, this);
@@ -123,7 +126,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     handleDoubleJump() {
         if (this.isDoubleJumping) {
             // Aplicamos fuerza
-            this.scene.physics.accelerateTo(this, this.body.position.x, this.body.position.y, 400, 200, 200);
+            this.scene.physics.accelerateTo(this, this.body.position.x, this.body.position.y, this.doubleJumpForce, this.doubleJumpMax, this.doubleJumpMax);
         } else {
             // Hacemos animación si es la primera vez
             this.play('double-jump', true);

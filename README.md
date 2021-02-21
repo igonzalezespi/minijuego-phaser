@@ -30,6 +30,10 @@ npm start
 
 ## Mejoras implementadas
 
-1. Sprite de Yoshi en vez del utilizado en clase
-2. Salto del personaje mejorado para hacer una animación al subir y otra al bajar
-3. Doble salto implementado como en el juego original
+1. Cambiada imagen de inicio: Mi nombre y "2"
+2. Sprite de Yoshi en vez del utilizado en clase
+3. Salto del personaje mejorado para hacer una animación al subir y otra al bajar
+4. Doble salto implementado como en el juego original
+5. Corregido collider de Yoshi
+6. Enemigo Goomba añadido
+6. Enemigo FireGuy añadido

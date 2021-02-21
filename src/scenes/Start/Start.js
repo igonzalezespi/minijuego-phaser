@@ -6,7 +6,7 @@ export default class Start extends Phaser.Scene {
     }
 
     init(data) {
-        this.DEVELOPMENT = false;
+        this.DEVELOPMENT = true;
         this.gameover = data.gameover;
         this.win = data.win;
     }

@@ -2,6 +2,8 @@ import Player from '../../player/Player';
 import Mushroom from '../../powerup/mushroom/Mushroom';
 import Coin from '../../coin/Coin';
 import ShyGuy from '../../enemy/ShyGuy/ShyGuy';
+import FireGuy from '../../enemy/FireGuy/FireGuy';
+import Goomba from '../../enemy/Goomba/Goomba';
 
 export default class Level1 extends Phaser.Scene {
     constructor() {
@@ -35,6 +37,8 @@ export default class Level1 extends Phaser.Scene {
         this.loadItem('Coin', Coin);
         this.loadItem('PowerUp', Mushroom);
         this.loadItem('ShyGuy', ShyGuy);
+        this.loadItem('FireGuy', FireGuy);
+        this.loadItem('Goomba', Goomba);
     }
 
     update(time, delta) {
