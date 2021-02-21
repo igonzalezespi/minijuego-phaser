@@ -21,6 +21,7 @@ module.exports = {
         "no-plusplus": ["off"],
         "class-methods-use-this": ["off"],
         "max-len": ["error", 170],
-        "no-nested-ternary": ["off"]
+        "no-nested-ternary": ["off"],
+        "linebreak-style": ["error", "windows"]
     }
 };

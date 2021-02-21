@@ -54,7 +54,7 @@ export default class Boot extends Phaser.Scene {
 
         this.load.bitmapFont('font', 'src/scenes/font.png', 'src/scenes/font.fnt');
 
-        this.load.image('player', 'src/player/animation/idle.png');
+        this.load.image('player', 'src/player/animation/main.png');
         this.load.atlas('playerSprites', 'src/player/animation/spritesheet.png', 'src/player/animation/config.json');
 
         this.load.atlas('coinSprites', 'src/coin/animation/spritesheet.png', 'src/coin/animation/config.json');

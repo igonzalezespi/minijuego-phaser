@@ -6,6 +6,7 @@ export default class Start extends Phaser.Scene {
     }
 
     init(data) {
+        this.DEVELOPMENT = true;
         this.gameover = data.gameover;
         this.win = data.win;
     }
@@ -16,28 +17,32 @@ export default class Start extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(0, 0, 'startBackground').setOrigin(0, 0);
-        this.music.play();
-
-        this.add.graphics()
-            .fillStyle(0x000000, 0.5)
-            .fillRect(0, this.sys.game.config.height / 2 - 20, this.sys.game.config.width, 50);
-
-        let width = 75;
-        let text = 'PRESS X TO PLAY';
-        if (this.gameover) {
-            width = 140;
-            text = 'GAME OVER - PRESS X TO TRY AGAIN!';
-        } else if (this.win) {
-            width = 130;
-            text = 'YOU WIN - PRESS X TO REPLAY!';
-        }
-        this.pressX = this.add.bitmapText(this.sys.game.config.width / 2 - width, this.sys.game.config.height / 2, 'font', text, 10);
-        this.startKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X);
-
-        this.input.on('pointerdown', () => {
+        if (this.DEVELOPMENT) {
             this.startGame();
-        });
+        } else {
+            this.add.image(0, 0, 'startBackground').setOrigin(0, 0);
+            this.music.play();
+
+            this.add.graphics()
+                .fillStyle(0x000000, 0.5)
+                .fillRect(0, this.sys.game.config.height / 2 - 20, this.sys.game.config.width, 50);
+
+            let width = 75;
+            let text = 'PRESS X TO PLAY';
+            if (this.gameover) {
+                width = 140;
+                text = 'GAME OVER - PRESS X TO TRY AGAIN!';
+            } else if (this.win) {
+                width = 130;
+                text = 'YOU WIN - PRESS X TO REPLAY!';
+            }
+            this.pressX = this.add.bitmapText(this.sys.game.config.width / 2 - width, this.sys.game.config.height / 2, 'font', text, 10);
+            this.startKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X);
+
+            this.input.on('pointerdown', () => {
+                this.startGame();
+            });
+        }
     }
 
     update() {
@@ -47,8 +52,12 @@ export default class Start extends Phaser.Scene {
     }
 
     startGame() {
-        this.music.stop();
-        this.playMusic.play();
-        setTimeout(() => this.scene.start('Level1'), 2000);
+        if (this.DEVELOPMENT) {
+            this.scene.start('Level1');
+        } else {
+            this.music.stop();
+            this.playMusic.play();
+            setTimeout(() => this.scene.start('Level1'), 2000);
+        }
     }
 }
