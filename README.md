@@ -3,6 +3,9 @@
 Plantilla tomada de:
 https://github.com/igonzalezespi/UNIR-GroupActivity-PhaserProjectRefactoring
 
+Demo:
+https://actividad-phaser.herokuapp.com/
+
 ## Desarrollo
 
 1. Instalar NodeJS.
