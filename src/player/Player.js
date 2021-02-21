@@ -14,7 +14,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.doubleJumpingAutoTime = 0.6; // Segundos para realizar el doble salto si se mantiene el espacio al saltar
         this.doubleJumpingTimeout = null;
 
-        this.doubleJumpForce = 400;
+        this.doubleJumpForce = 25;
         this.doubleJumpMax = 220;
 
         this.scene.add.existing(this);
@@ -90,7 +90,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (this.isJumping) {
-            this.handleJump();
+            this.handleJump(delta);
         } else if (this.body.velocity.x !== 0) {
             this.play('walk', true);
         } else {
@@ -103,7 +103,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.jumpSound.play();
     }
 
-    handleJump() {
+    handleJump(delta) {
         // Si se suelta el botón de salto mientras se está realizando doble salto, este termina
         if (this.isDoubleJumping && !this.cursor.space.isDown) {
             this.setAcceleration(0);
@@ -115,7 +115,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (this.doubleJumpingAllowed && this.cursor.space.isDown) {
             // Si podemos hacer doble salto y se está apretando la tecla de salto
             //    aplicamos la fuerza del doble salto
-            this.handleDoubleJump();
+            this.handleDoubleJump(delta);
         } else if (!this.isJumpingUp && this.body.velocity.y < 0) {
             this.jumpUp();
         } else if (!this.isJumpingDown && this.body.velocity.y > 0) {
@@ -123,10 +123,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    handleDoubleJump() {
+    handleDoubleJump(delta) {
         if (this.isDoubleJumping) {
             // Aplicamos fuerza
-            this.scene.physics.accelerateTo(this, this.body.position.x, this.body.position.y, this.doubleJumpForce, this.doubleJumpMax, this.doubleJumpMax);
+            this.scene.physics.accelerateTo(
+                this,
+                this.body.position.x,
+                this.body.position.y,
+                this.doubleJumpForce * delta,
+                this.doubleJumpMax,
+                this.doubleJumpMax,
+            );
         } else {
             // Hacemos animación si es la primera vez
             this.play('double-jump', true);
