@@ -3,7 +3,8 @@ import Start from './scenes/Start/Start';
 import Level1 from './scenes/Level1/Level1';
 import Pause from './scenes/Pause/Pause';
 
-const config = {
+// eslint-disable-next-line no-new
+new Phaser.Game({
     type: Phaser.AUTO,
     width: 800,
     height: 480,
@@ -24,7 +25,4 @@ const config = {
         Level1,
         Pause,
     ],
-};
-
-// eslint-disable-next-line no-new
-new Phaser.Game(config);
+});

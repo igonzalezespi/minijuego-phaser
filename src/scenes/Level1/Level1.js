@@ -29,8 +29,7 @@ export default class Level1 extends Phaser.Scene {
         this.music.play();
         this.loadBackground();
         this.loadMap();
-        this.player = new Player(this, 50, 100);
-        this.updateObjects.push(this.player);
+        this.loadPlayer();
         this.loadPhysics();
         this.loadUI();
 
@@ -57,6 +56,13 @@ export default class Level1 extends Phaser.Scene {
     }
 
     ///
+
+    loadPlayer() {
+        console.log(this.map.getObjectLayer('Player'));
+        const playerPosition = this.map.getObjectLayer('Player').objects[0];
+        this.player = new Player(this, playerPosition.x, playerPosition.y);
+        this.updateObjects.push(this.player);
+    }
 
     loadBackground() {
         this.add

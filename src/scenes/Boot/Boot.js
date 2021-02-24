@@ -30,7 +30,7 @@ export default class Boot extends Phaser.Scene {
             if (this.canPLay) {
                 this.sound.add('bootMusic').play();
                 setTimeout(() => {
-                    this.scene.start('Start');
+                    this.scene.start('Level1');
                 }, 1000);
             }
         });
