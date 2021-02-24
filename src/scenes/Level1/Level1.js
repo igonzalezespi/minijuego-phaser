@@ -58,7 +58,6 @@ export default class Level1 extends Phaser.Scene {
     ///
 
     loadPlayer() {
-        console.log(this.map.getObjectLayer('Player'));
         const playerPosition = this.map.getObjectLayer('Player').objects[0];
         this.player = new Player(this, playerPosition.x, playerPosition.y);
         this.updateObjects.push(this.player);
